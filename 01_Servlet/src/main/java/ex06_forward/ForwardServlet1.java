@@ -20,7 +20,7 @@ public class ForwardServlet1 extends HttpServlet {
       String model = request.getParameter("model");
       System.out.println("ForwardServlet1 : " + model);
       
-      // 포워드(전달)
+      // 포워드(전달) -> 값을 넘겨주는 것, 정확하게는 request(저장소)나 response(저장소x) 를 넘겨줌 
       request.getRequestDispatcher("/ForwardServlet2").forward(request, response);
       
    }

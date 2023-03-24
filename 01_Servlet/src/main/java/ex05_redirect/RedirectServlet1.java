@@ -21,13 +21,14 @@ public class RedirectServlet1 extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 리다이렉트 이전(첫 번째 요청)의 파라미터 확인 
+		// redirect 이전(첫 번째 요청)의 파라미터 확인 
 		// 첫 번째 요청 : /01_Servlet/RedirectServlet1?model=TV
 		
-		String model = request.getParameter("model"); // 
+		String model = request.getParameter("model"); 
 		System.out.println("RedirectServlet1 : " + model);
 		
-		// redirect를 이용해서 다른 서블릿(다른 서버 경로)으로 이동하기 
+		// redirect를 이용해서 다른 서블릿(다른 서버 경로)으로 이동하기
+		// redirect는 <a href>나 location 으로 이동하는 것과 같다 
 		response.sendRedirect("/01_Servlet/RedirectServlet2");
 		
 	}

@@ -31,7 +31,7 @@ public class PostServlet extends HttpServlet {
 		
 		// <form> 태그에 포함된 입력 요소들이 name 속성을 가지고 있다면, null 처리를 할 수 없다. 빈 문자열("")로 처리해야 한다. 
 		int price = 0;
-		if(strPrice.isEmpty() == false) { // 빈 문자열 점검 // 권장하는 것은 if(str==null || str.isEmpty())
+		if(strPrice.isEmpty() == false) { // 빈 문자열 점검_권장은 if(str==null || str.isEmpty())
 			price = Integer.parseInt(strPrice);
 		}
 		

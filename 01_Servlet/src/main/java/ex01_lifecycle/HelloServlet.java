@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 	  1. Servlet
 	  2. 웹 화면을 결과로 만드는 클래스이다.
 	  3. HttpServlet 클래스를 상속 받는다. 
-	  4. Jsp/Servelt Container인 Tomcat에 의해서 실행된다. (Tomcat이 없으면 컴파일 오류 발생) 
-	  5. 서블릿을 실행한면 (Ctrl + F11) 웹 브라우저(Chrome)에서 결과가 표시된다. 
+	  4. Jsp/Servlet Container인 Tomcat에 의해서 실행된다. (Tomcat이 없으면 컴파일 오류 발생) 
+	  5. 서블릿을 실행하면 (Ctrl + F11) 웹 브라우저(Chrome)에서 결과가 표시된다. 
  */
 
 /*
@@ -31,9 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-/**
- * Servlet implementation class HelloServlet
- */
+
 @WebServlet("/HelloServlet") // URLMapping
 public class HelloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -42,29 +40,24 @@ public class HelloServlet extends HttpServlet {
 		1. 생성자 
 			1) 가장 먼저 호출된다. 
 			2) 호출 뒤 자동으로 init() 메소드가 호출된다. 
-	 */
 	
-	/*
 		2. init() 
-		1) 서블릿 환경 설정을 담당한다. 
-		2) init() 호출 뒤 자동으로 service() 메소드가 호출된다. 
+			1) 서블릿 환경 설정을 담당한다. 
+			2) init() 호출 뒤 자동으로 service() 메소드가 호출된다. 
 		
 	 */
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+ 
     public HelloServlet() {
         super();
-    	System.out.println("생성자() 호출");
+    	System.out.println("생성자 호출");
 	}
 
-	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
+	
 	public void init(ServletConfig config) throws ServletException {
 		System.out.println("init() 호출");
-		}
+	
+	}
 	
 	/*
 		3. service() 
@@ -75,9 +68,7 @@ public class HelloServlet extends HttpServlet {
 	
 	 */
 
-	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("service() 호출");
 		
@@ -109,9 +100,7 @@ public class HelloServlet extends HttpServlet {
 	  			
 	 */
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// 응답 정보를 가진 객체 : response
@@ -119,31 +108,28 @@ public class HelloServlet extends HttpServlet {
 		// 클라이언트로 정보(텍스트)를 보내기 위한 출력 스트림 : response.getWriter() - PrintWriter
 		
 		// 출력 스트림으로 정보(텍스트)를 보내는 메소드 : append(), write(), print(), println()
-		response.getWriter().append("Served at: ").append(request.getContextPath()); //getWriter는 PrintWriter와 같음  / getContextPath() 프로젝트 이름과 함께 보내주겠다. 
+		response.getWriter().append("Served at: ").append(request.getContextPath()); //getWriter는 PrintWriter와 같음 
+																					// getContextPath() 현재 프로젝트명 호출 
 	}
 
 	/*
-  	4. doPost()
+  	5. doPost()
   		1) POST 방식의 요청을 처리하는 메소드이다. 
   		2) POST 방식의 요청의 예시 
-  			(1) <form metohd="POST" action="http://localhost:9090/01_Servlet/HelloServlet">
+  			(1) <form method="POST" action="http://localhost:9090/01_Servlet/HelloServlet">
   			(2) $.ajax({
 	  			
 		  			type: 'POST',
 		  			url:'http://localhost:9090/01_Servlet/HelloServlet', 
 		  			
-		  			})
-	  			
-  			
+		  	})
  */
-	
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// POST 메소드를 통해서 넘어온 정보를 모두 doGet() 메소드에 넘긴다. 
+		
  		doGet(request, response);
 	}
-//init하고 service는 안 할 예정. 작업은 doGet()에서 진행할 예정. 
+		//init하고 service는 안 할 예정. 작업은 doGet()에서 진행할 예정. 
 }
