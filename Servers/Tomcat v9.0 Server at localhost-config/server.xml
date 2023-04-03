@@ -153,7 +153,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
       	  <!--  path="/01_Servlet"를 contextpath라고 한다 -->
-      <Context docBase="03_Mvc" path="/03_Mvc" reloadable="true" source="org.eclipse.jst.jee.server:03_Mvc"/></Host>
+      <Context docBase="04_Dbcp" path="/04_Dbcp" reloadable="true" source="org.eclipse.jst.jee.server:04_Dbcp"/></Host>
     </Engine>
   </Service>
 </Server>
