@@ -6,34 +6,18 @@
   The ASF licenses this file to You under the Apache License, Version 2.0
   (the "License"); you may not use this file except in compliance with
   the License.  You may obtain a copy of the License at
-
       http://www.apache.org/licenses/LICENSE-2.0
-
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
+
 <!-- The contents of this file will be loaded for each web application -->
+
 <Context>
 
-	<!-- Oracle XE -->
-	<Resource 
-		auth="Container"
-		name="jdbc/GDJ61"
-		type="javax.sql.DataSource"
-		driverClassName="oracle.jdbc.OracleDriver"
-		url="jdbc:oracle:thin:@localhost:1521:xe"
-		username="GDJ61"
-		password="1111"	
-		maxTotal="8" 
-		maxIdle="8" 
-		maxWaitMillis="-1" />	
-		
-		<!-- 8개의 커넥션을 만들고 8개가 모두 사용중이라면 -->
-		<!-- maxWaitMillis 얼마나 기다릴 수 있는가 : 무한정 -->
-		
     <!-- Default set of monitored resources. If one of these changes, the    -->
     <!-- web application will be reloaded.                                   -->
     <WatchedResource>WEB-INF/web.xml</WatchedResource>

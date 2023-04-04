@@ -18,6 +18,13 @@
 		$('#btn_write').on('click', function(){
 			location.href = '${contextPath}/writeBoard.do';
 		})
+		// 삭제 링크 클릭 
+		$('.link_remove').on('click', function(event){
+			if(confirm('삭제할까요?') == false) { // 취소를 눌렀다면 
+				event.preventDefault(); // <button> 태그의 기본 동작인 submit 속성의 동작을 막는다.
+				return;
+			}
+		})
 	})
 
 </script>
@@ -39,12 +46,17 @@
 				</tr>
 			</thead>	
 			<tbody>
-				<c:forEach items="${boardList}" var="board">  <%-- 어레이리스트에서 하나씩 뺀 값을 보드라고 하겠다. --%>
+				<c:forEach items="${boardList}" var="board" varStatus="vs">  <%-- ArrayList에서 하나씩 뺀 값을 보드라고 하겠다. vs.index 하면 0,1,2 --%>
 				<tr>
-				 <td>${board.board_no}</td>
-				 <td>${board.title}</td>
-				 <td>${board.created_date}</td>
-				 <td><a href=""><i class="fa-solid fa-x"></i></a></td>
+					 <td><fmt:formatNumber value="${boardListCount - vs.index}" pattern="#,##0" /></td> <%-- 전체 게시글의 개수 - 인덱스 --%>
+					 <td><a href="${contextPath}/getBoardByNo.do?board_no=${board.board_no}">${board.title}</a></td>
+					 <td><fmt:formatDate value="${board.created_date}" pattern="yy.MM.dd" /></td>
+					 <td>
+				 		<form method="post" action="${contextPath}/removeBoard.do"> <%--get이면 주소창에 우리가 입력하는 걸로도 삭제가 가능하니까 그거 막으려고 post로만 삭제할 수 있게 막아준거야--%>
+				 			<input type="hidden" name="board_no" value="${board.board_no}">
+				 			<button class="link_remove"><i class="fa-solid fa-x"></i></a></button>
+				 		</form>
+				 </td>  <%-- js에서는 컨텍스트 패스 el로 적기로함. for문에서는 id값 못줌. class로 기재. 파라미터이름은 변수이름과 맞추기로 함 --%>
 				</tr>
 				</c:forEach>
 			</tbody>

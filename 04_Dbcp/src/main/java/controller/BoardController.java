@@ -27,7 +27,7 @@ public class BoardController extends HttpServlet {
 		
 		// 요청과 응답의 인코딩
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/hrml; charset=UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		
 		// URLMapping 확인 
 		String requestURI = request.getRequestURI();					  /* 	/04_Dbcp/getAllBoards.do	*/
@@ -41,12 +41,12 @@ public class BoardController extends HttpServlet {
 		ActionForward af = null;
 		
 		// URLMapping에 따른 서비스 생성 
-		switch(urlMapping) {
+		switch(urlMapping) { // 모든 서비스를 선택하는 건 스위치 (어떤 서비스를 쓰겠다 하고 고르는 것) 
 		case "/getAllBoardList.do": //목록보기
 			service = new BoardListService();
 			break;
 		case "/getBoardByNo.do":
-			service = new BoardDetailService();
+			service = new BoardDetailService(); //보드에드서비스로 만들어진 서비스의 실행쪽으로 흘러들어가고 있음
 			break;
 		case "/addBoard.do":
 			service = new BoardAddService();
@@ -64,7 +64,7 @@ public class BoardController extends HttpServlet {
 		
 		
 		// 서비스 실행 
-		if(service != null) {
+		if(service != null) { //execute로 실행하게끔 되어있음 
 			af = service.execute(request, response);
 			
 		}
