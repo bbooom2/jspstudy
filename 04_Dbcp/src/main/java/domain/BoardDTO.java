@@ -15,8 +15,8 @@ import lombok.Setter;
 public class BoardDTO {
 	
 	private int board_no;
-	private String title;
-	private String content;
+	private String title; // b조
+	private String content; // 화이팅 
 	private Date modified_date;
 	private Date created_date;
 
