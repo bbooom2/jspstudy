@@ -15,6 +15,11 @@ import service.BoardModifyService;
 import service.BoardRemoveService;
 import service.IBoardService;
 
+/*
+Mapping이란 해당 값이 다른 값을 가리키도록 하는 것이다.
+예를들면  http://localhost:8080/action.do 라는 페이지를 만들었다고 했을 시 이 url이 그대로 노출된다면 보안상 매우 취약하다. 
+그래서 action.do가 아닌 ac.do가 action.do랑 같다고 설정하여 ac.do로 갔을 때 action.do로 가게 함으로써 보안성을 높일 수 있음. 
+*/
 
 @WebServlet("*.do") 
 // getAllBoardList.do (실무에서는 gerAllBoards.do를 많이 사용)	getBoardByNo.do  writeBoard.do(작성후이동)  addBoard.do(작성완료)  modifyBoard.do  removeBoard.do 
@@ -29,10 +34,10 @@ public class BoardController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		// URLMapping 확인  --> 주소창에 딜리트 넘버 번호 해줬을 때 주소창 자체로 삭제될 수 있을 까봐 유알엘매핑처리 (보안) 
+		// URLMapping 확인 
 		String requestURI = request.getRequestURI();					  /* 	/04_Dbcp/getAllBoards.do  프로젝트 + 파일명	*/ 
 		String contextPath = request.getContextPath(); 					  /*	/04_Dbcp				  프로젝트 Path_프로젝트명까지의 경로	*/
-		String urlMapping = requestURI.substring(contextPath.length());   /*	/getAllBoardList.do		  리퀘스트 유알아이에서 패스를 잘라낸 나머지 명만 남게 됨 */
+		String urlMapping = requestURI.substring(contextPath.length());   /*	/getAllBoardList.do		  리퀘스트 유알아이에서 패스를 잘라낸 나머지만 남게 됨 */
 		
 		// 모든 서비스의 공통 타입 선언 
 		IBoardService service = null;

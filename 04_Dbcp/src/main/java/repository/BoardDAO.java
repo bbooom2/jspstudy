@@ -17,10 +17,10 @@ import domain.BoardDTO;
 public class BoardDAO {
 	
 	// 모든 메소드가 사용할 공통 필드 
-	private Connection con;	//오라클 데이타베이스와 연결할 때 사용한다 (이게 있어야만 연결 가능) 
-	private PreparedStatement ps; // 자바에서 쿼리문을 작성하기 위해 사용하는 인터페이스 제이디비씨나 디비씨피할때 꼭 필요한 객체이다. 
-	private ResultSet rs; // 셀렉트문의 결과를 저장하는 객체이다
-	private String sql; // 작성할 쿼리문을 담아낼 객체이다. 
+	private Connection con;	       //오라클 데이타베이스와 연결할 때 사용한다 (이게 있어야만 연결 가능) 
+	private PreparedStatement ps;  // 자바에서 쿼리문을 작성하기 위해 사용하는 인터페이스 제이디비씨나 디비씨피할때 꼭 필요한 객체이다. 
+	private ResultSet rs;         // 셀렉트문의 결과를 저장하는 객체이다
+	private String sql;           // 작성할 쿼리문을 담아낼 객체이다. 
 	
 	// Connection 관리를 위한 DataSource 필드 
 	private DataSource dataSource;  //데이타소스 필드를 미리 만들어놨음 
@@ -166,8 +166,10 @@ public class BoardDAO {
 	
 	// 게시글 삽입하기 
 	public int insertBoard(BoardDTO board) {
+		
 		// 1. 삽입 결과 변수 선언 
 		int insertResult = 0;
+		
 		try {
 			
 			// 2. DataSource로부터 Connection 얻어 오기 

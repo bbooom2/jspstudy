@@ -10,7 +10,7 @@ import repository.BoardDAO;
 public class BoardAddService implements IBoardService {
 
 	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) { // write.jsp에서 출발한 게 컨트롤러를 거쳐서 보드에드서비스로 전달 request 중요 
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) { // write.jsp에서 출발한 게 BoardController를 거쳐서 BoardAddService로 전달, request 중요 
 		
 		// 1. 요청 파라미터 
 		String title = request.getParameter("title"); // 타이틀을 나에게 달라 
